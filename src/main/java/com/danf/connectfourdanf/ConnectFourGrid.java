@@ -44,18 +44,15 @@ public class ConnectFourGrid {
   }
 
   public void playPlayer(int playerNum, int col) {
-    if (bottomEmptyCircle(col) == -1) {
-      // todo check valid play and change the column
+    if (playerNum != 1 && playerNum != 2) {
+      System.out.println("Invalid player number");
+    } else if (bottomEmptyCircle(col) == -1) {
       System.out.println("Column is full.");
-    } else if (playerNum == 1) {
-      gridArray[bottomEmptyCircle(col)][col] = P1_CIRCLE_CHAR;
-    } else if (playerNum == 2) {
-      gridArray[bottomEmptyCircle(col)][col] = P2_CIRCLE_CHAR;
-    } else if (playerNum == 0) {
-      System.out.println("Game is over.");
     } else {
-      System.out.println("No player to play.");
+      this.gridArray[bottomEmptyCircle(col)][col] = (playerNum == 1 ? P1_CIRCLE_CHAR
+          : P2_CIRCLE_CHAR);
     }
+
   }
 
   public int bottomEmptyCircle(int co) {

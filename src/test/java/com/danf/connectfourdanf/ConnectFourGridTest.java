@@ -72,4 +72,29 @@ public class ConnectFourGridTest {
     Assert.assertEquals(EMPTY_CIRCLE_CHAR, cfg.getTokenColour(3));
   }
 
+  @Test
+  public void playPlayerTest(){
+    ConnectFourGrid cfg = new ConnectFourGrid();
+    int colNum=0;
+    String colFullStr = "Column is full.\r\n";
+
+    cfg.playPlayer(1,colNum);
+    Assert.assertEquals(P1_CIRCLE_CHAR,cfg.getGridArray()[GRID_HEIGHT-1][colNum]);
+
+    cfg.playPlayer(2,colNum);
+    Assert.assertEquals(P2_CIRCLE_CHAR,cfg.getGridArray()[GRID_HEIGHT-2][colNum]);
+
+    cfg.playPlayer(1,colNum);
+    cfg.playPlayer(2,colNum);
+    cfg.playPlayer(1,colNum);
+    cfg.playPlayer(2,colNum);
+
+    ByteArrayOutputStream actualPrint = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(actualPrint));
+    cfg.playPlayer(1,colNum);
+
+    Assert.assertEquals(colFullStr,actualPrint.toString());
+
+  }
+
 }
