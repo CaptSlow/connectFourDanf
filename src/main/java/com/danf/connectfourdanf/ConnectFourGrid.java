@@ -1,6 +1,10 @@
 package com.danf.connectfourdanf;
 
-import static com.danf.connectfourdanf.ConfigHandler.*;
+import static com.danf.connectfourdanf.ConfigHandler.EMPTY_CIRCLE_CHAR;
+import static com.danf.connectfourdanf.ConfigHandler.GRID_HEIGHT;
+import static com.danf.connectfourdanf.ConfigHandler.GRID_WIDTH;
+import static com.danf.connectfourdanf.ConfigHandler.P1_CIRCLE_CHAR;
+import static com.danf.connectfourdanf.ConfigHandler.P2_CIRCLE_CHAR;
 
 import java.util.Arrays;
 
@@ -67,16 +71,14 @@ public class ConnectFourGrid {
   }
 
   public char getTokenColour(int pl) {
-    char pChar;
-    if (pl == 1) {
-      pChar = P1_CIRCLE_CHAR;
-    } else if (pl == 2) {
-      pChar = P2_CIRCLE_CHAR;
-    } else {
-      pChar = EMPTY_CIRCLE_CHAR;
-    }
-    return pChar;
-  }
 
+    if (pl == 1) {
+      return P1_CIRCLE_CHAR;
+    } else if (pl == 2) {
+      return P2_CIRCLE_CHAR;
+    } else {
+      return EMPTY_CIRCLE_CHAR;
+    }
+  }
 
 }
