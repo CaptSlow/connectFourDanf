@@ -1,14 +1,16 @@
 package com.danf.connectfourdanf;
 
+import static com.danf.connectfourdanf.ConfigHandler.EMPTY_CIRCLE_CHAR;
+import static com.danf.connectfourdanf.ConfigHandler.GRID_HEIGHT;
+import static com.danf.connectfourdanf.ConfigHandler.P1_CIRCLE_CHAR;
+import static com.danf.connectfourdanf.ConfigHandler.P2_CIRCLE_CHAR;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ConnectFourGridTest {
-
-  private char emptyCircleChar = 'O';
-  private int gridHeight = 6;
 
   @Test
   public void createConnectFourGrid() {
@@ -17,7 +19,7 @@ public class ConnectFourGridTest {
     ConnectFourGrid connectFourGrid = new ConnectFourGrid();
     ConnectFourGrid connectFourGridY = new ConnectFourGrid(yChar);
 
-    Assert.assertEquals(emptyCircleChar, connectFourGrid.getGridArray()[1][1]);
+    Assert.assertEquals(EMPTY_CIRCLE_CHAR, connectFourGrid.getGridArray()[1][1]);
     Assert.assertEquals(yChar, connectFourGridY.getGridArray()[1][1]);
 
   }
@@ -42,12 +44,32 @@ public class ConnectFourGridTest {
   @Test
   public void bottomEmptyCircleTest() {
     ConnectFourGrid cfg = new ConnectFourGrid();
+    char rChar = 'R';
     int colNum = 0;
 
-    Assert.assertEquals(gridHeight - 1, cfg.bottomEmptyCircle(colNum));
-    cfg.getGridArray()[gridHeight - 1][colNum] = 'R';
+    Assert.assertEquals(GRID_HEIGHT - 1, cfg.bottomEmptyCircle(colNum));
+    cfg.getGridArray()[GRID_HEIGHT - 1][colNum] = rChar;
 
-    Assert.assertEquals(gridHeight - 2, cfg.bottomEmptyCircle(colNum));
+    Assert.assertEquals(GRID_HEIGHT - 2, cfg.bottomEmptyCircle(colNum));
+
+    for (int i = 0; i < GRID_HEIGHT; i++) {
+      cfg.getGridArray()[i][colNum] = rChar;
+    }
+
+    Assert.assertEquals(-1, cfg.bottomEmptyCircle(colNum));
+
+  }
+
+  @Test
+  public void getTokenColourTest() {
+    ConnectFourGrid cfg = new ConnectFourGrid();
+
+    Assert.assertEquals(P1_CIRCLE_CHAR, cfg.getTokenColour(1));
+    Assert.assertEquals(P2_CIRCLE_CHAR, cfg.getTokenColour(2));
+
+    Assert.assertEquals(EMPTY_CIRCLE_CHAR, cfg.getTokenColour(-1));
+    Assert.assertEquals(EMPTY_CIRCLE_CHAR, cfg.getTokenColour(0));
+    Assert.assertEquals(EMPTY_CIRCLE_CHAR, cfg.getTokenColour(3));
   }
 
 }
