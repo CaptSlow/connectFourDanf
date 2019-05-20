@@ -4,15 +4,18 @@ import java.util.Scanner;
 
 public class Application {
 
-  private ConnectFourGame cfg;
+  private ConnectFourGame cfGame;
 
   public Application(){
     System.out.println("Starting Connect Four App");
   }
 
+  /**
+   * run the application
+   */
   public void run(){
-    this.cfg = new ConnectFourGame();
-    String[] inArr = this.getUserInput();
+    this.cfGame = new ConnectFourGame();
+    cfGame.playGame();
   }
 
   /**
