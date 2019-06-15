@@ -15,26 +15,26 @@ public class ConnectFourGame {
   private ConnectFourGrid gameGrid;
   private int winner;
 
-  public ConnectFourGame() {
+  ConnectFourGame() {
     this.gameGrid = new ConnectFourGrid();
     this.roundCount = 0;
     this.winner = 0;
     System.out.println("New Connect 4 game.\r\nLet's get started.");
   }
 
-  public ConnectFourGrid getGameGrid() {
+  ConnectFourGrid getGameGrid() {
     return gameGrid;
   }
 
-  public int getRoundCount() {
+  private int getRoundCount() {
     return this.roundCount;
   }
 
-  public void setRoundCount(int roundCount) {
+  void setRoundCount(int roundCount) {
     this.roundCount = roundCount;
   }
 
-  public int getWinner() {
+  int getWinner() {
     return winner;
   }
 
@@ -42,11 +42,11 @@ public class ConnectFourGame {
     this.winner = win;
   }
 
-  public int currentPlayer() {
+  int currentPlayer() {
     return ((this.roundCount + 1) % 2) + 1;
   }
 
-  public int playerFromToken(char token) {
+  private int playerFromToken(char token) {
     if (token == P1_CIRCLE_CHAR) {
       return 1;
     } else if (token == P2_CIRCLE_CHAR) {
@@ -57,7 +57,7 @@ public class ConnectFourGame {
     }
   }
 
-  public int acceptUserColumn() {
+  private int acceptUserColumn() {
     try {
       Scanner myScanner = new Scanner(System.in);
       System.out.println("Enter the column you wish to play in.");
@@ -71,11 +71,12 @@ public class ConnectFourGame {
   /**
    * method to play a game of connect 4 round 0 is not a real round - just the intro
    */
-  public void playGame() {
+  void playGame() {
     while (!this.weHaveAWinner()) {
       this.roundCount++;
 
-      System.out.println("\r\n*****************\r\nRound " + this.getRoundCount());
+      System.out.println("\r\n\r\n");
+      System.out.println("*****************\r\nRound " + this.getRoundCount() + "\r\n");
 
       this.getGameGrid().printGrid();
 
@@ -101,11 +102,11 @@ public class ConnectFourGame {
     System.out.println("Player " + this.winner + " wins.");
   }
 
-  public boolean weHaveAWinner() {
+  private boolean weHaveAWinner() {
     return (this.checkRows() || this.checkCols() || this.checkDiagonal());
   }
 
-  public boolean checkCols() {
+  boolean checkCols() {
     int repeats;
 
     for (int co = 0; co < GRID_WIDTH; co++) {
@@ -128,11 +129,11 @@ public class ConnectFourGame {
     return false;
   }
 
-  public boolean checkRows() {
+  private boolean checkRows() {
     return false;
   }
 
-  public boolean checkDiagonal() {
+  private boolean checkDiagonal() {
     return false;
   }
 
