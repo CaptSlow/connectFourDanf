@@ -29,7 +29,7 @@ public class ConnectFourGridTest {
   public void gridPrintTest() {
     ConnectFourGrid connectFourGrid = new ConnectFourGrid();
 
-    String aRow = "[O, O, O, O, O, O, O]";
+    String aRow = "[_, _, _, _, _, _, _]";
     String expPrint = GRID_COLUMNS + "\r\n" +
         aRow + "\r\n" + aRow + "\r\n" + aRow + "\r\n" + aRow + "\r\n" + aRow + "\r\n" + aRow
             + "\r\n";

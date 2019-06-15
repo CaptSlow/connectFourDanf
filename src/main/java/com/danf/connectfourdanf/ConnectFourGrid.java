@@ -13,7 +13,7 @@ public class ConnectFourGrid {
 
   private char[][] gridArray = new char[GRID_HEIGHT][GRID_WIDTH];
 
-  public ConnectFourGrid() {
+  ConnectFourGrid() {
     for (int ro = 0; ro < GRID_HEIGHT; ro++) {
       for (int co = 0; co < GRID_WIDTH; co++) {
         gridArray[ro][co] = EMPTY_CIRCLE_CHAR;
@@ -21,7 +21,7 @@ public class ConnectFourGrid {
     }
   }
 
-  public ConnectFourGrid(char c) {
+  ConnectFourGrid(char c) {
     for (int ro = 0; ro < GRID_HEIGHT; ro++) {
       for (int co = 0; co < GRID_WIDTH; co++) {
         gridArray[ro][co] = c;
@@ -29,7 +29,7 @@ public class ConnectFourGrid {
     }
   }
 
-  public char[][] getGridArray() {
+  char[][] getGridArray() {
     return this.gridArray;
   }
 
@@ -37,7 +37,7 @@ public class ConnectFourGrid {
     this.gridArray = aGrid;
   }
 
-  public void printGrid() {
+  void printGrid() {
     System.out.println(GRID_COLUMNS);
     for (int ro = 0; ro < GRID_HEIGHT; ro++) {
       char[] myRow = gridArray[ro];
@@ -45,7 +45,7 @@ public class ConnectFourGrid {
     }
   }
 
-  public int playPlayer(int playerNum, int col) {
+  int playPlayer(int playerNum, int col) {
     if (playerNum != 1 && playerNum != 2) {
       System.out.println("Invalid player number");
       return -1;
@@ -60,7 +60,7 @@ public class ConnectFourGrid {
 
   }
 
-  public int bottomEmptyCircle(int co) {
+  int bottomEmptyCircle(int co) {
     int bottomCircle = -1;
     int ro = 0;
     while (ro < GRID_HEIGHT) {
@@ -72,7 +72,7 @@ public class ConnectFourGrid {
     return bottomCircle;
   }
 
-  public char getTokenColour(int pl) {
+  char getTokenColour(int pl) {
 
     if (pl == 1) {
       return P1_CIRCLE_CHAR;
