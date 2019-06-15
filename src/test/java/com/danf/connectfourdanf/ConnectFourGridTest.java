@@ -1,6 +1,7 @@
 package com.danf.connectfourdanf;
 
 import static com.danf.connectfourdanf.ConfigHandler.EMPTY_CIRCLE_CHAR;
+import static com.danf.connectfourdanf.ConfigHandler.GRID_COLUMNS;
 import static com.danf.connectfourdanf.ConfigHandler.GRID_HEIGHT;
 import static com.danf.connectfourdanf.ConfigHandler.P1_CIRCLE_CHAR;
 import static com.danf.connectfourdanf.ConfigHandler.P2_CIRCLE_CHAR;
@@ -29,7 +30,7 @@ public class ConnectFourGridTest {
     ConnectFourGrid connectFourGrid = new ConnectFourGrid();
 
     String aRow = "[O, O, O, O, O, O, O]";
-    String expPrint =
+    String expPrint = GRID_COLUMNS + "\r\n" +
         aRow + "\r\n" + aRow + "\r\n" + aRow + "\r\n" + aRow + "\r\n" + aRow + "\r\n" + aRow
             + "\r\n";
 

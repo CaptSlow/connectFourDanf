@@ -1,6 +1,7 @@
 package com.danf.connectfourdanf;
 
 import static com.danf.connectfourdanf.ConfigHandler.EMPTY_CIRCLE_CHAR;
+import static com.danf.connectfourdanf.ConfigHandler.GRID_COLUMNS;
 import static com.danf.connectfourdanf.ConfigHandler.GRID_HEIGHT;
 import static com.danf.connectfourdanf.ConfigHandler.GRID_WIDTH;
 import static com.danf.connectfourdanf.ConfigHandler.P1_CIRCLE_CHAR;
@@ -37,20 +38,24 @@ public class ConnectFourGrid {
   }
 
   public void printGrid() {
+    System.out.println(GRID_COLUMNS);
     for (int ro = 0; ro < GRID_HEIGHT; ro++) {
       char[] myRow = gridArray[ro];
       System.out.println(Arrays.toString(myRow));
     }
   }
 
-  public void playPlayer(int playerNum, int col) {
+  public int playPlayer(int playerNum, int col) {
     if (playerNum != 1 && playerNum != 2) {
       System.out.println("Invalid player number");
+      return -1;
     } else if (bottomEmptyCircle(col) == -1) {
       System.out.println("Column is full.");
+      return -1;
     } else {
       this.gridArray[bottomEmptyCircle(col)][col] = (playerNum == 1 ? P1_CIRCLE_CHAR
           : P2_CIRCLE_CHAR);
+      return playerNum;
     }
 
   }

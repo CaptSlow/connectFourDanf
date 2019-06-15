@@ -6,6 +6,7 @@ import static com.danf.connectfourdanf.ConfigHandler.GRID_WIDTH;
 import static com.danf.connectfourdanf.ConfigHandler.P1_CIRCLE_CHAR;
 import static com.danf.connectfourdanf.ConfigHandler.P2_CIRCLE_CHAR;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConnectFourGame {
@@ -57,19 +58,24 @@ public class ConnectFourGame {
   }
 
   public int acceptUserColumn() {
-    Scanner myScanner = new Scanner(System.in);
-    System.out.println("Enter the column you wish to play in.");
-    return myScanner.nextInt() - 1;
+    try {
+      Scanner myScanner = new Scanner(System.in);
+      System.out.println("Enter the column you wish to play in.");
+      return myScanner.nextInt() - 1;
+    } catch (InputMismatchException ime){
+      System.out.println("Please enter a number from 1 to 7");
+      return -1;
+    }
   }
 
   /**
    * method to play a game of connect 4 round 0 is not a real round - just the intro
    */
   public void playGame() {
-    while (this.winner == 0) {
+    while (!this.weHaveAWinner()) {
       this.roundCount++;
 
-      System.out.println("\r\n*****************\r\nStarting round number " + this.getRoundCount());
+      System.out.println("\r\n*****************\r\nRound " + this.getRoundCount());
 
       this.getGameGrid().printGrid();
 
@@ -77,8 +83,17 @@ public class ConnectFourGame {
           .println("\r\nPlayer " + this.currentPlayer() + " to play using " + this.getGameGrid()
               .getTokenColour(this.currentPlayer()));
 
-      this.getGameGrid().playPlayer(this.currentPlayer(), acceptUserColumn());
+      int userCol = acceptUserColumn();
 
+      if (userCol>-1 && userCol<GRID_HEIGHT+1) {
+
+        if (this.getGameGrid().playPlayer(this.currentPlayer(), userCol) != -1) {
+          System.out.println("Well played");
+        } else {
+          System.out.println("No such column");
+          this.roundCount = this.roundCount - 1;
+        }
+      }
       this.weHaveAWinner();
     }
 

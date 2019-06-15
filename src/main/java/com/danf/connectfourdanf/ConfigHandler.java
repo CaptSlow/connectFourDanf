@@ -7,5 +7,6 @@ public class ConfigHandler {
   public static final char EMPTY_CIRCLE_CHAR = 'O';
   public static final char P1_CIRCLE_CHAR = 'Y';
   public static final char P2_CIRCLE_CHAR = 'R';
+  public static final String GRID_COLUMNS = " 1  2  3  4  5  6  7 ";
 
 }
