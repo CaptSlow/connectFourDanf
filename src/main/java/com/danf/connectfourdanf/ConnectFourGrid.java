@@ -39,12 +39,12 @@ public class ConnectFourGrid {
     System.out.println(GRID_COLUMNS);
     for (int ro = 0; ro < GRID_HEIGHT; ro++) {
       char[] myRow = gridArray[ro];
-      for (int co=0; co < GRID_WIDTH; co++){
-        if (co==0){
+      for (int co = 0; co < GRID_WIDTH; co++) {
+        if (co == 0) {
           System.out.print("| ");
         }
         System.out.print(myRow[co] + " ");
-        if (co==GRID_WIDTH-1){
+        if (co == GRID_WIDTH - 1) {
           System.out.println("|");
         }
       }

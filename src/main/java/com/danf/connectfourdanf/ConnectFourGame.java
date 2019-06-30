@@ -62,7 +62,7 @@ public class ConnectFourGame {
       Scanner myScanner = new Scanner(System.in);
       System.out.println("Enter the column you wish to play in.");
       return myScanner.nextInt() - 1;
-    } catch (InputMismatchException ime){
+    } catch (InputMismatchException ime) {
       System.out.println("Please enter a number from 1 to 7");
       return -1;
     }
@@ -79,7 +79,7 @@ public class ConnectFourGame {
 
       int userCol = acceptUserColumn();
 
-      if (userCol>-1 && userCol<GRID_HEIGHT+1) {
+      if (userCol > -1 && userCol < GRID_HEIGHT + 1) {
 
         if (this.getGameGrid().playPlayer(this.currentPlayer(), userCol) != -1) {
           System.out.println("Well played");
@@ -108,22 +108,20 @@ public class ConnectFourGame {
 
   boolean checkCols() {
     int repeats;
-
     for (int co = 0; co < GRID_WIDTH; co++) {
       repeats = 1;
       for (int ro = 1; ro < GRID_HEIGHT; ro++) {
 
-        char tokeni = this.getGameGrid().getGridArray()[ro-1][co];
+        char tokeni = this.getGameGrid().getGridArray()[ro - 1][co];
         char tokenii = this.getGameGrid().getGridArray()[ro][co];
 
-        if ((tokeni==tokenii) && (tokeni != EMPTY_CIRCLE_CHAR)) {
+        if ((tokeni == tokenii) && (tokeni != EMPTY_CIRCLE_CHAR)) {
           repeats++;
           if (repeats > 3) {
             this.winner = this.playerFromToken(this.getGameGrid().getGridArray()[ro][co]);
             return true;
           }
         }
-
       }
     }
     return false;
@@ -135,10 +133,10 @@ public class ConnectFourGame {
       repeats = 1;
       for (int co = 1; co < GRID_WIDTH; co++) {
 
-        char tokeni = this.getGameGrid().getGridArray()[ro][co-1];
+        char tokeni = this.getGameGrid().getGridArray()[ro][co - 1];
         char tokenii = this.getGameGrid().getGridArray()[ro][co];
 
-        if ((tokeni==tokenii) && (tokeni != EMPTY_CIRCLE_CHAR)) {
+        if ((tokeni == tokenii) && (tokeni != EMPTY_CIRCLE_CHAR)) {
           repeats++;
           if (repeats > 3) {
             this.winner = this.playerFromToken(this.getGameGrid().getGridArray()[ro][co]);
@@ -147,10 +145,9 @@ public class ConnectFourGame {
         }
 
       }
+    }
 
-      }
-
-      return false;
+    return false;
   }
 
   private boolean checkDiagonal() {
