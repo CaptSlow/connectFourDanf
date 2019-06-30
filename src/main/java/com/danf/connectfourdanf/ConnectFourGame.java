@@ -19,7 +19,7 @@ public class ConnectFourGame {
     this.gameGrid = new ConnectFourGrid();
     this.roundCount = 0;
     this.winner = 0;
-    System.out.println("New Connect 4 game.\r\nLet's get started.");
+    System.out.println("Let's get started.");
   }
 
   ConnectFourGrid getGameGrid() {
@@ -88,9 +88,7 @@ public class ConnectFourGame {
           this.roundCount = this.roundCount - 1;
         }
       }
-      this.weHaveAWinner();
     }
-
     this.getGameGrid().printGrid();
     System.out.println("Player " + this.winner + " wins.");
   }
@@ -131,8 +129,28 @@ public class ConnectFourGame {
     return false;
   }
 
-  private boolean checkRows() {
-    return false;
+  boolean checkRows() {
+    int repeats;
+    for (int ro = 0; ro < GRID_HEIGHT; ro++) {
+      repeats = 1;
+      for (int co = 1; co < GRID_WIDTH; co++) {
+
+        char tokeni = this.getGameGrid().getGridArray()[ro][co-1];
+        char tokenii = this.getGameGrid().getGridArray()[ro][co];
+
+        if ((tokeni==tokenii) && (tokeni != EMPTY_CIRCLE_CHAR)) {
+          repeats++;
+          if (repeats > 3) {
+            this.winner = this.playerFromToken(this.getGameGrid().getGridArray()[ro][co]);
+            return true;
+          }
+        }
+
+      }
+
+      }
+
+      return false;
   }
 
   private boolean checkDiagonal() {

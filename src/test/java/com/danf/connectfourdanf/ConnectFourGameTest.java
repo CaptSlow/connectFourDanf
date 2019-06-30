@@ -39,4 +39,21 @@ public class ConnectFourGameTest {
 
   }
 
+  @Test
+  public void checkRows() {
+    ConnectFourGame cfGame = new ConnectFourGame();
+    int rowNum = 0;
+
+    Assert.assertFalse(cfGame.checkRows());
+    Assert.assertEquals(0,cfGame.getWinner());
+
+    cfGame.getGameGrid().getGridArray()[rowNum][0]='R';
+    cfGame.getGameGrid().getGridArray()[rowNum][1]='R';
+    cfGame.getGameGrid().getGridArray()[rowNum][2]='R';
+    cfGame.getGameGrid().getGridArray()[rowNum][3]='R';
+
+    Assert.assertTrue(cfGame.checkRows());
+    Assert.assertEquals(2,cfGame.getWinner());
+
+  }
 }

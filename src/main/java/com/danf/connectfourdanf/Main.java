@@ -6,7 +6,7 @@ public class Main {
     System.out.println("Starting Connect Four");
     Application app = new Application();
     app.run();
-    System.out.println("End of main");
+    System.out.println("Game Over");
   }
 
 }
