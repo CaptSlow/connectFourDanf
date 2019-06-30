@@ -75,14 +75,7 @@ public class ConnectFourGame {
     while (!this.weHaveAWinner()) {
       this.roundCount++;
 
-      System.out.println("\r\n\r\n");
-      System.out.println("*****************\r\nRound " + this.getRoundCount() + "\r\n");
-
-      this.getGameGrid().printGrid();
-
-      System.out
-          .println("\r\nPlayer " + this.currentPlayer() + " to play using " + this.getGameGrid()
-              .getTokenColour(this.currentPlayer()));
+      printRound();
 
       int userCol = acceptUserColumn();
 
@@ -100,6 +93,15 @@ public class ConnectFourGame {
 
     this.getGameGrid().printGrid();
     System.out.println("Player " + this.winner + " wins.");
+  }
+
+  private void printRound() {
+    System.out.println("\r\n\r\n");
+    System.out.println("*****************\r\nRound " + this.getRoundCount() + "\r\n");
+    this.getGameGrid().printGrid();
+    System.out
+        .println("\r\nPlayer " + this.currentPlayer() + " to play using " + this.getGameGrid()
+            .getTokenColour(this.currentPlayer()));
   }
 
   private boolean weHaveAWinner() {
