@@ -103,22 +103,22 @@ public class ConnectFourGame {
   }
 
   private boolean weHaveAWinner() {
-    return (this.checkRows() || this.checkCols() || this.checkDiagonal());
+    return (this.checkRows(this.gameGrid) || this.checkCols(this.gameGrid) || this.checkDiagonal());
   }
 
-  boolean checkCols() {
+  boolean checkCols(ConnectFourGrid grid) {
     int repeats;
     for (int co = 0; co < GRID_WIDTH; co++) {
       repeats = 1;
       for (int ro = 1; ro < GRID_HEIGHT; ro++) {
 
-        char tokeni = this.getGameGrid().getGridArray()[ro - 1][co];
-        char tokenii = this.getGameGrid().getGridArray()[ro][co];
+        char tokeni = grid.getGridArray()[ro - 1][co];
+        char tokenii = grid.getGridArray()[ro][co];
 
         if ((tokeni == tokenii) && (tokeni != EMPTY_CIRCLE_CHAR)) {
           repeats++;
           if (repeats > 3) {
-            this.winner = this.playerFromToken(this.getGameGrid().getGridArray()[ro][co]);
+            this.winner = this.playerFromToken(grid.getGridArray()[ro][co]);
             return true;
           }
         }
@@ -127,19 +127,19 @@ public class ConnectFourGame {
     return false;
   }
 
-  boolean checkRows() {
+  boolean checkRows(ConnectFourGrid grid) {
     int repeats;
     for (int ro = 0; ro < GRID_HEIGHT; ro++) {
       repeats = 1;
       for (int co = 1; co < GRID_WIDTH; co++) {
 
-        char tokeni = this.getGameGrid().getGridArray()[ro][co - 1];
-        char tokenii = this.getGameGrid().getGridArray()[ro][co];
+        char tokeni = grid.getGridArray()[ro][co - 1];
+        char tokenii = grid.getGridArray()[ro][co];
 
         if ((tokeni == tokenii) && (tokeni != EMPTY_CIRCLE_CHAR)) {
           repeats++;
           if (repeats > 3) {
-            this.winner = this.playerFromToken(this.getGameGrid().getGridArray()[ro][co]);
+            this.winner = this.playerFromToken(grid.getGridArray()[ro][co]);
             return true;
           }
         }
@@ -150,8 +150,24 @@ public class ConnectFourGame {
     return false;
   }
 
-  private boolean checkDiagonal() {
+  boolean checkDiagonal() {
+//    ConnectFourGrid cfg = dedediagonaliseGrid(this.gameGrid);
+//    return checkCols(cfg);
     return false;
   }
+
+//  ConnectFourGrid dedediagonaliseGrid(ConnectFourGrid cfg) {
+//    ConnectFourGrid dediagonalisedGrid = new ConnectFourGrid();
+//    int shift = 3;
+//
+//    for (int ro=0; ro<GRID_HEIGHT-1; ro++){
+//      for (int co=0; co<4; co++) {
+//        dediagonalisedGrid.getGridArray()[ro][co] = cfg.getGridArray()[ro][co+shift];
+//      }
+//      shift--;
+//    }
+//    return dediagonalisedGrid;
+//  }
+
 
 }
