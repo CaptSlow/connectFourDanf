@@ -7,6 +7,7 @@ import static com.danf.connectfourdanf.ConfigHandler.P1_CIRCLE_CHAR;
 import static com.danf.connectfourdanf.ConfigHandler.P2_CIRCLE_CHAR;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ConnectFourGame {
@@ -40,6 +41,25 @@ public class ConnectFourGame {
 
   public void setWinner(int win) {
     this.winner = win;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ConnectFourGame)) {
+      return false;
+    }
+    ConnectFourGame that = (ConnectFourGame) o;
+    return roundCount == that.roundCount &&
+        winner == that.winner &&
+        gameGrid.equals(that.gameGrid);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(roundCount, gameGrid, winner);
   }
 
   int currentPlayer() {
@@ -150,24 +170,9 @@ public class ConnectFourGame {
     return false;
   }
 
-  boolean checkDiagonal() {
-//    ConnectFourGrid cfg = dedediagonaliseGrid(this.gameGrid);
-//    return checkCols(cfg);
+  private boolean checkDiagonal() {
     return false;
   }
-
-//  ConnectFourGrid dedediagonaliseGrid(ConnectFourGrid cfg) {
-//    ConnectFourGrid dediagonalisedGrid = new ConnectFourGrid();
-//    int shift = 3;
-//
-//    for (int ro=0; ro<GRID_HEIGHT-1; ro++){
-//      for (int co=0; co<4; co++) {
-//        dediagonalisedGrid.getGridArray()[ro][co] = cfg.getGridArray()[ro][co+shift];
-//      }
-//      shift--;
-//    }
-//    return dediagonalisedGrid;
-//  }
 
 
 }

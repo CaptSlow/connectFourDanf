@@ -7,6 +7,8 @@ import static com.danf.connectfourdanf.ConfigHandler.GRID_WIDTH;
 import static com.danf.connectfourdanf.ConfigHandler.P1_CIRCLE_CHAR;
 import static com.danf.connectfourdanf.ConfigHandler.P2_CIRCLE_CHAR;
 
+import java.util.Arrays;
+
 public class ConnectFourGrid {
 
   private char[][] gridArray = new char[GRID_HEIGHT][GRID_WIDTH];
@@ -33,6 +35,23 @@ public class ConnectFourGrid {
 
   public void setGridArray(char[][] aGrid) {
     this.gridArray = aGrid;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ConnectFourGrid)) {
+      return false;
+    }
+    ConnectFourGrid that = (ConnectFourGrid) o;
+    return Arrays.equals(gridArray, that.gridArray);
+  }
+
+  @Override
+  public int hashCode() {
+    return Arrays.hashCode(gridArray);
   }
 
   void printGrid() {
