@@ -123,7 +123,7 @@ public class ConnectFourGame {
   }
 
   private boolean weHaveAWinner() {
-    return (this.checkRows(this.gameGrid) || this.checkCols(this.gameGrid) || this.checkDiagonal());
+    return (this.checkRows(this.gameGrid) || this.checkCols(this.gameGrid));
   }
 
   boolean checkCols(ConnectFourGrid grid) {
@@ -169,10 +169,5 @@ public class ConnectFourGame {
 
     return false;
   }
-
-  private boolean checkDiagonal() {
-    return false;
-  }
-
 
 }

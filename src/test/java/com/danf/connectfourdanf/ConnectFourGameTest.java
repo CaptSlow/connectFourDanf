@@ -95,18 +95,4 @@ public class ConnectFourGameTest {
     Assert.assertEquals(0,cfGame.getWinner());
 
   }
-
-//  @Test
-//  public void checkDiagonalTest(){
-//    ConnectFourGame cfGameDiagonal = new ConnectFourGame();
-//
-//    cfGameDiagonal.getGameGrid().getGridArray()[3][0]='R';
-//    cfGameDiagonal.getGameGrid().getGridArray()[2][1]='R';
-//    cfGameDiagonal.getGameGrid().getGridArray()[1][2]='R';
-//    cfGameDiagonal.getGameGrid().getGridArray()[0][3]='R';
-//
-//    Assert.assertTrue(cfGameDiagonal.checkDiagonal());
-//
-//  }
-
 }
